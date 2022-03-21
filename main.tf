@@ -9,7 +9,7 @@ resource "aws_cloudwatch_metric_alarm" "httpcode_target_5xx_count" {
 
   metric_query {
     id          = "e1"
-    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "FILL(m1, LINEAR)"
+    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "m1"
     return_data = (length(var.metric_expression) > 0 ? "true" : "false")
   }
 
@@ -42,7 +42,7 @@ resource "aws_cloudwatch_metric_alarm" "httpcode_lb_5xx_count" {
 
   metric_query {
     id          = "e1"
-    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "FILL(m1, LINEAR)"
+    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "m1"
     return_data = (length(var.metric_expression) > 0 ? "true" : "false")
   }
 
@@ -74,7 +74,7 @@ resource "aws_cloudwatch_metric_alarm" "target_response_time_average" {
 
   metric_query {
     id          = "e1"
-    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "FILL(m1, LINEAR)"
+    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "m1"
     return_data = (length(var.metric_expression) > 0 ? "true" : "false")
   }
 
@@ -107,7 +107,7 @@ resource "aws_cloudwatch_metric_alarm" "unhealthy_hosts" {
 
   metric_query {
     id          = "e1"
-    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "FILL(m1, LINEAR)"
+    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "m1"
     return_data = (length(var.metric_expression) > 0 ? "true" : "false")
   }
 
@@ -141,7 +141,7 @@ resource "aws_cloudwatch_metric_alarm" "healthy_hosts" {
 
   metric_query {
     id          = "e1"
-    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "FILL(m1, LINEAR)"
+    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "m1"
     return_data = (length(var.metric_expression) > 0 ? "true" : "false")
   }
 
