@@ -9,20 +9,19 @@ resource "aws_cloudwatch_metric_alarm" "httpcode_target_5xx_count" {
 
   metric_query {
     id          = "e1"
-    expression  = "FILL(m1, LINEAR)"
-    label       = "Linear filled metric"
-    return_data = (var.linear_fill_missing_data ? "true" : "false")
+    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "FILL(m1, LINEAR)"
+    return_data = (length(var.metric_expression) > 0 ? "true" : "false")
   }
 
   metric_query {
     id = "m1"
-    return_data = (var.linear_fill_missing_data ? "false" : "true")
+    return_data = (length(var.metric_expression) > 0 ? "false" : "true")
 
     metric {
       metric_name         = "HTTPCode_Target_5XX_Count"
       namespace           = "AWS/ApplicationELB"
       period              = var.statistic_period
-      statistic           = "Sum"
+      stat                = "Sum"
 
       dimensions = {
         "TargetGroup"  = var.target_group_id
@@ -43,20 +42,19 @@ resource "aws_cloudwatch_metric_alarm" "httpcode_lb_5xx_count" {
 
   metric_query {
     id          = "e1"
-    expression  = "FILL(m1, LINEAR)"
-    label       = "Linear filled metric"
-    return_data = (var.linear_fill_missing_data ? "true" : "false")
+    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "FILL(m1, LINEAR)"
+    return_data = (length(var.metric_expression) > 0 ? "true" : "false")
   }
 
   metric_query {
     id = "m1"
-    return_data = (var.linear_fill_missing_data ? "false" : "true")
+    return_data = (length(var.metric_expression) > 0 ? "false" : "true")
 
     metric {
       metric_name         = "HTTPCode_ELB_5XX_Count"
       namespace           = "AWS/ApplicationELB"
       period              = var.statistic_period
-      statistic           = "Sum"
+      stat                = "Sum"
 
       dimensions = {
         "LoadBalancer" = var.load_balancer_id
@@ -76,20 +74,19 @@ resource "aws_cloudwatch_metric_alarm" "target_response_time_average" {
 
   metric_query {
     id          = "e1"
-    expression  = "FILL(m1, LINEAR)"
-    label       = "Linear filled metric"
-    return_data = (var.linear_fill_missing_data ? "true" : "false")
+    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "FILL(m1, LINEAR)"
+    return_data = (length(var.metric_expression) > 0 ? "true" : "false")
   }
 
   metric_query {
     id = "m1"
-    return_data = (var.linear_fill_missing_data ? "false" : "true")
+    return_data = (length(var.metric_expression) > 0 ? "false" : "true")
 
     metric {
       metric_name         = "TargetResponseTime"
       namespace           = "AWS/ApplicationELB"
       period              = var.statistic_period
-      statistic           = "Average"
+      stat                = "Average"
 
       dimensions = {
         "TargetGroup"  = var.target_group_id
@@ -110,20 +107,19 @@ resource "aws_cloudwatch_metric_alarm" "unhealthy_hosts" {
 
   metric_query {
     id          = "e1"
-    expression  = "FILL(m1, LINEAR)"
-    label       = "Linear filled metric"
-    return_data = (var.linear_fill_missing_data ? "true" : "false")
+    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "FILL(m1, LINEAR)"
+    return_data = (length(var.metric_expression) > 0 ? "true" : "false")
   }
 
   metric_query {
     id = "m1"
-    return_data = (var.linear_fill_missing_data ? "false" : "true")
+    return_data = (length(var.metric_expression) > 0 ? "false" : "true")
 
     metric {
       metric_name         = "UnHealthyHostCount"
       namespace           = "AWS/ApplicationELB"
       period              = var.statistic_period
-      statistic           = "Minimum"
+      stat                = "Minimum"
 
       dimensions = {
         "TargetGroup"  = var.target_group_id
@@ -145,20 +141,19 @@ resource "aws_cloudwatch_metric_alarm" "healthy_hosts" {
 
   metric_query {
     id          = "e1"
-    expression  = "FILL(m1, LINEAR)"
-    label       = "Linear filled metric"
-    return_data = (var.linear_fill_missing_data ? "true" : "false")
+    expression  = length(var.metric_expression) > 0 ? var.metric_expression : "FILL(m1, LINEAR)"
+    return_data = (length(var.metric_expression) > 0 ? "true" : "false")
   }
 
   metric_query {
     id = "m1"
-    return_data = (var.linear_fill_missing_data ? "false" : "true")
+    return_data = (length(var.metric_expression) > 0 ? "false" : "true")
 
     metric {
       metric_name         = "HealthyHostCount"
       namespace           = "AWS/ApplicationELB"
       period              = var.statistic_period
-      statistic           = "Minimum"
+      stat                = "Minimum"
 
       dimensions = {
         "TargetGroup"  = var.target_group_id
