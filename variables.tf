@@ -55,3 +55,9 @@ variable "actions_ok" {
   default     = []
   description = "A list of actions to take when alarms are cleared. Will likely be an SNS topic for event distribution."
 }
+
+variable "linear_fill_missing_data" {
+  type        = bool
+  default     = false
+  description = "Linear fill missing data."
+}
