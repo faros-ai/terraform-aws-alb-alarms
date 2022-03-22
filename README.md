@@ -33,18 +33,20 @@ module "aws-alb-alarms" {
 
 ## Variables
 
-| Name                      | Description                                                                                              | Type     | Default | Required |
-| ------------------------- | -------------------------------------------------------------------------------------------------------- | -------- | ------- | :------: |
-| actions_alarm             | A list of actions to take when alarms are triggered. Will likely be an SNS topic for event distribution. | `list`   | `[]`    |    no    |
-| actions_ok                | A list of actions to take when alarms are cleared. Will likely be an SNS topic for event distribution.   | `list`   | `[]`    |    no    |
-| evaluation_period         | The evaluation period over which to use when triggering alarms.                                          | `string` | `"5"`   |    no    |
-| load_balancer_id          | ALB ID                                                                                                   | `string` | n/a     |   yes    |
-| prefix                    | Alarm Name Prefix                                                                                        | `string` | `""`    |    no    |
-| response_time_threshold   | The average number of milliseconds that requests should complete within.                                 | `string` | `"50"`  |    no    |
-| unhealthy_hosts_threshold | The number of unhealthy hosts.                                                                           | `string` | `"0"`   |    no    |
-| healthy_hosts_threshold   | The number of healthy hosts.                                                                             | `string` | `"0"`   |    no    |
-| statistic_period          | The number of seconds that make each statistic period.                                                   | `string` | `"60"`  |    no    |
-| target_group_id           | Target Group ID                                                                                          | `string` | n/a     |   yes    |
+| Name                      | Description                                                                                              | Type     | Default   | Required |
+| ------------------------- | -------------------------------------------------------------------------------------------------------- | -------- | --------- | :------: |
+| actions_alarm             | A list of actions to take when alarms are triggered. Will likely be an SNS topic for event distribution. | `list`   | `[]`      |    no    |
+| actions_ok                | A list of actions to take when alarms are cleared. Will likely be an SNS topic for event distribution.   | `list`   | `[]`      |    no    |
+| evaluation_period         | The evaluation period over which to use when triggering alarms.                                          | `string` | `"5"`     |    no    |
+| load_balancer_id          | ALB ID                                                                                                   | `string` | n/a       |   yes    |
+| metric_expression         | A Cloudwatch metric expression to use for a math expression                                              | `string` | `""`      |    no    |
+| prefix                    | Alarm Name Prefix                                                                                        | `string` | `""`      |    no    |
+| response_time_threshold   | The average number of milliseconds that requests should complete within.                                 | `string` | `"50"`    |    no    |
+| unhealthy_hosts_threshold | The number of unhealthy hosts.                                                                           | `string` | `"0"`     |    no    |
+| healthy_hosts_threshold   | The number of healthy hosts.                                                                             | `string` | `"0"`     |    no    |
+| statistic_period          | The number of seconds that make each statistic period.                                                   | `string` | `"60"`    |    no    |
+| target_group_id           | Target Group ID                                                                                          | `string` | n/a       |   yes    |
+| treat_missing_data        | How to treat missing Cloudwatch metric data                                                              | `string` | `missing` |    no    |
 
 ## Outputs
 
