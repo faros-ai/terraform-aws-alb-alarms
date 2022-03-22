@@ -40,6 +40,7 @@ resource "aws_cloudwatch_metric_alarm" "httpcode_lb_5xx_count" {
   alarm_description   = "Average API 5XX load balancer error code count is too high"
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
+  treat_missing_data  = "ignore"
 
   metric_query {
     id          = "e1"
@@ -72,6 +73,7 @@ resource "aws_cloudwatch_metric_alarm" "target_response_time_average" {
   alarm_description   = format("Average API response time is greater than %s", var.response_time_threshold)
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
+  treat_missing_data  = "ignore"
 
   metric_query {
     id          = "e1"
@@ -105,6 +107,7 @@ resource "aws_cloudwatch_metric_alarm" "unhealthy_hosts" {
   alarm_description   = format("Unhealthy host count is greater than %s", var.unhealthy_hosts_threshold)
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
+  treat_missing_data  = "ignore"
 
   metric_query {
     id          = "e1"
@@ -139,6 +142,7 @@ resource "aws_cloudwatch_metric_alarm" "healthy_hosts" {
   alarm_description   = format("Healthy host count is less than or equal to %s", var.healthy_hosts_threshold)
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
+  treat_missing_data  = "ignore"
 
   metric_query {
     id          = "e1"
