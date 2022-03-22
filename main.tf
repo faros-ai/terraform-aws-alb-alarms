@@ -6,17 +6,17 @@ resource "aws_cloudwatch_metric_alarm" "httpcode_target_5xx_count" {
   alarm_description   = "Average API 5XX target group error code count is too high"
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
-  treat_missing_data  = "ignore"
+  treat_missing_data  = var.treat_missing_data
 
   metric_query {
     id          = "e1"
     expression  = length(var.metric_expression) > 0 ? var.metric_expression : "m1"
-    return_data = (length(var.metric_expression) > 0 ? "true" : "false")
+    return_data = length(var.metric_expression) > 0 ? "true" : "false"
   }
 
   metric_query {
     id = "m1"
-    return_data = (length(var.metric_expression) > 0 ? "false" : "true")
+    return_data = length(var.metric_expression) > 0 ? "false" : "true"
 
     metric {
       metric_name         = "HTTPCode_Target_5XX_Count"
@@ -40,17 +40,17 @@ resource "aws_cloudwatch_metric_alarm" "httpcode_lb_5xx_count" {
   alarm_description   = "Average API 5XX load balancer error code count is too high"
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
-  treat_missing_data  = "ignore"
+  treat_missing_data  = var.treat_missing_data
 
   metric_query {
     id          = "e1"
     expression  = length(var.metric_expression) > 0 ? var.metric_expression : "m1"
-    return_data = (length(var.metric_expression) > 0 ? "true" : "false")
+    return_data = length(var.metric_expression) > 0 ? "true" : "false"
   }
 
   metric_query {
     id = "m1"
-    return_data = (length(var.metric_expression) > 0 ? "false" : "true")
+    return_data = length(var.metric_expression) > 0 ? "false" : "true"
 
     metric {
       metric_name         = "HTTPCode_ELB_5XX_Count"
@@ -73,17 +73,17 @@ resource "aws_cloudwatch_metric_alarm" "target_response_time_average" {
   alarm_description   = format("Average API response time is greater than %s", var.response_time_threshold)
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
-  treat_missing_data  = "ignore"
+  treat_missing_data  = var.treat_missing_data
 
   metric_query {
     id          = "e1"
     expression  = length(var.metric_expression) > 0 ? var.metric_expression : "m1"
-    return_data = (length(var.metric_expression) > 0 ? "true" : "false")
+    return_data = length(var.metric_expression) > 0 ? "true" : "false"
   }
 
   metric_query {
     id = "m1"
-    return_data = (length(var.metric_expression) > 0 ? "false" : "true")
+    return_data = length(var.metric_expression) > 0 ? "false" : "true"
 
     metric {
       metric_name         = "TargetResponseTime"
@@ -107,17 +107,17 @@ resource "aws_cloudwatch_metric_alarm" "unhealthy_hosts" {
   alarm_description   = format("Unhealthy host count is greater than %s", var.unhealthy_hosts_threshold)
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
-  treat_missing_data  = "ignore"
+  treat_missing_data  = var.treat_missing_data
 
   metric_query {
     id          = "e1"
     expression  = length(var.metric_expression) > 0 ? var.metric_expression : "m1"
-    return_data = (length(var.metric_expression) > 0 ? "true" : "false")
+    return_data = length(var.metric_expression) > 0 ? "true" : "false"
   }
 
   metric_query {
     id = "m1"
-    return_data = (length(var.metric_expression) > 0 ? "false" : "true")
+    return_data = length(var.metric_expression) > 0 ? "false" : "true"
 
     metric {
       metric_name         = "UnHealthyHostCount"
@@ -142,17 +142,17 @@ resource "aws_cloudwatch_metric_alarm" "healthy_hosts" {
   alarm_description   = format("Healthy host count is less than or equal to %s", var.healthy_hosts_threshold)
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
-  treat_missing_data  = "ignore"
+  treat_missing_data  = var.treat_missing_data
 
   metric_query {
     id          = "e1"
     expression  = length(var.metric_expression) > 0 ? var.metric_expression : "m1"
-    return_data = (length(var.metric_expression) > 0 ? "true" : "false")
+    return_data = length(var.metric_expression) > 0 ? "true" : "false"
   }
 
   metric_query {
     id = "m1"
-    return_data = (length(var.metric_expression) > 0 ? "false" : "true")
+    return_data = length(var.metric_expression) > 0 ? "false" : "true"
 
     metric {
       metric_name         = "HealthyHostCount"

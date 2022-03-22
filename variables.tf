@@ -56,6 +56,12 @@ variable "actions_ok" {
   description = "A list of actions to take when alarms are cleared. Will likely be an SNS topic for event distribution."
 }
 
+variable "treat_missing_data" {
+  description = "How to treat missing Cloudwatch metric data"
+  type        = string
+  default     = "missing"
+}
+
 variable "metric_expression" {
   description = "A Cloudwatch metric expression to use for a math expression"
   type        = string
