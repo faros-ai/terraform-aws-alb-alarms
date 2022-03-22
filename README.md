@@ -39,7 +39,7 @@ module "aws-alb-alarms" {
 | actions_ok                | A list of actions to take when alarms are cleared. Will likely be an SNS topic for event distribution.   | `list`   | `[]`    |    no    |
 | evaluation_period         | The evaluation period over which to use when triggering alarms.                                          | `string` | `"5"`   |    no    |
 | load_balancer_id          | ALB ID                                                                                                   | `string` | n/a     |   yes    |
-| metric_expression         | A Cloudwatch metric expression to use for a math expression                                              | `string` | `""`   |    no    |
+| metric_expression         | A Cloudwatch metric expression to use for a math expression                                              | `string` | `""`    |    no    |
 | prefix                    | Alarm Name Prefix                                                                                        | `string` | `""`    |    no    |
 | response_time_threshold   | The average number of milliseconds that requests should complete within.                                 | `string` | `"50"`  |    no    |
 | unhealthy_hosts_threshold | The number of unhealthy hosts.                                                                           | `string` | `"0"`   |    no    |
