@@ -41,7 +41,7 @@ module "aws-alb-alarms" {
 | load_balancer_id          | ALB ID                                                                                                   | `string` | n/a       |   yes    |
 | metric_expression         | A Cloudwatch metric expression to use for a math expression                                              | `string` | `""`      |    no    |
 | prefix                    | Alarm Name Prefix                                                                                        | `string` | `""`      |    no    |
-| response_time_threshold   | The average number of milliseconds that requests should complete within.                                 | `string` | `"50"`    |    no    |
+| response_time_threshold   | The average number of seconds that requests should complete within.                                      | `string` | `"1"`     |    no    |
 | unhealthy_hosts_threshold | The number of unhealthy hosts.                                                                           | `string` | `"0"`     |    no    |
 | healthy_hosts_threshold   | The number of healthy hosts.                                                                             | `string` | `"0"`     |    no    |
 | statistic_period          | The number of seconds that make each statistic period.                                                   | `string` | `"60"`    |    no    |
